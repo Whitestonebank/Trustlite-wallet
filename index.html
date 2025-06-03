@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TrustLite Crypto Wallet</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { background-color: #121212; color: #eee; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="max-w-sm w-full">
+    <h2 class="text-3xl font-bold mb-6 text-center">Login</h2>
+    <form id="login-form" class="bg-gray-900 rounded-lg p-6 shadow-lg">
+      <label class="block mb-2">Username</label>
+      <input name="username" type="text" class="w-full mb-4 p-2 rounded bg-gray-700 border border-gray-600" required />
+      <label class="block mb-2">Password</label>
+      <input name="password" type="password" class="w-full mb-4 p-2 rounded bg-gray-700 border border-gray-600" required />
+      <button type="submit" class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded font-semibold">Login</button>
+      <p id="login-error" class="text-red-600 mt-2 hidden">Invalid username or password.</p>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="max-w-4xl w-full hidden">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold">TrustLite Wallet Dashboard</h2>
+      <button id="logout-btn" class="bg-red-600 hover:bg-red-700 py-1 px-3 rounded font-semibold">Logout</button>
+    </div>
+
+    <!-- Total balance nicely styled -->
+    <div id="total-balance-container" class="mb-8 p-6 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl shadow-lg text-center text-4xl font-extrabold tracking-wide text-white select-none">
+      Total Balance: <span id="total-balance">-</span>
+    </div>
+
+    <div id="crypto-list" class="space-y-8"></div>
+
+    <div class="flex justify-center space-x-4 mt-6">
+      <button id="send-total-btn" class="bg-green-600 hover:bg-green-700 py-2 px-6 rounded font-semibold">Send BTC</button>
+      <button id="receive-total-btn" class="bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded font-semibold">Receive BTC</button>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50">
+    <div id="modal-content" class="bg-gray-900 rounded-lg p-6 max-w-md w-full shadow-lg relative"></div>
+    <button id="modal-close" class="absolute top-2 right-2 text-gray-400 hover:text-gray-200 text-2xl font-bold">&times;</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
